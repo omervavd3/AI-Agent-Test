@@ -6,6 +6,7 @@ from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, START, END
 from dotenv import load_dotenv
 
+# Loads OPENAI_API_KEY automatically from .env file
 load_dotenv()
 
 class AgentState(TypedDict):
