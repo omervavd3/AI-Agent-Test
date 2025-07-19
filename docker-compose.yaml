@@ -8,6 +8,8 @@ services:
       - "8000:8000"
     env_file:
       - ./backend/.env
+    depends_on:
+      - ollama
 
   frontend:
     build: ./frontend
@@ -16,3 +18,9 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+
+  ollama:
+    build: ./ollama_docker
+    container_name: ollama
+    ports:
+      - "11434:11434"

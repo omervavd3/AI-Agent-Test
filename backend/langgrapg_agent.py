@@ -2,7 +2,8 @@
 import os
 from typing import TypedDict, List, Union
 from langchain_core.messages import HumanMessage, AIMessage
-from langchain_openai import ChatOpenAI
+#from langchain_openai import ChatOpenAI
+from langchain_community.chat_models import ChatOllama
 from langgraph.graph import StateGraph, START, END
 from dotenv import load_dotenv
 
@@ -12,10 +13,10 @@ load_dotenv()
 class AgentState(TypedDict):
     messages: List[Union[HumanMessage, AIMessage]]
 
-llm = ChatOpenAI(
-    model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
-    temperature=0.3,
-    max_tokens=300
+llm = ChatOllama(
+    model="mistral",
+    base_url=os.getenv("OLLAMA_HOST", "http://ollama:11434"),
+    temperature=0.3
 )
 
 def process(state: AgentState) -> AgentState:
