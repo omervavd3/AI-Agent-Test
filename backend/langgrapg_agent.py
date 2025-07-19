@@ -14,7 +14,7 @@ class AgentState(TypedDict):
     messages: List[Union[HumanMessage, AIMessage]]
 
 llm = ChatOllama(
-    model="mistral",
+    model="gemma:2b",
     base_url=os.getenv("OLLAMA_HOST", "http://ollama:11434"),
     temperature=0.3
 )
